@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Unique Fitness - Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: red;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 430px;
+            padding: 70px 7%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background-image:
+            linear-gradient(
+                rgba(0,0,0,0.65),
+                rgba(0,0,0,0.75)
+            ),
+            url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .welcome {
+            background: #173d20;
+            color: #65e681;
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            max-width: 650px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            color: orange;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* MAIN */
+
+        .container {
+            padding: 60px 7%;
+        }
+
+        .title {
+            text-align: center;
+            color: orange;
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* CLASSES */
+
+        .classes {
+            display: grid;
+            grid-template-columns:
+            repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 25px;
+        }
+
+        .card {
+            background: #1c1c1c;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: orange;
+        }
+
+        .card h2 {
+            color: orange;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .card li {
+            margin: 9px 0;
+            color: #ddd;
+        }
+
+        /* FREE CLASS */
+
+        .free-class {
+            margin-top: 60px;
+            padding: 40px;
+            text-align: center;
+
+            border: 2px solid orange;
+            border-radius: 15px;
+
+            background: #211a08;
+        }
+
+        .free-class h2 {
+            color: orange;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .free-class p {
+            color: #ddd;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .join-btn {
+            display: inline-block;
+            margin-top: 15px;
+
+            background: orange;
+            color: black;
+
+            padding: 13px 25px;
+
+            border-radius: 8px;
+            border: none;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .join-btn:hover {
+            background: red;
+            color: white;
+        }
+
+        /* FORM */
+
+        #freeClassForm {
+            display: none;
+
+            max-width: 500px;
+
+            margin: 30px auto 0;
+
+            background: #222;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            border: 1px solid #444;
+        }
+
+        #freeClassForm h2 {
+            color: orange;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #freeClassForm input,
+        #freeClassForm select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin: 10px 0;
+
+            border: none;
+
+            border-radius: 8px;
+        }
+
+        #freeClassForm button {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin-top: 10px;
+
+            background: orange;
+
+            color: black;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        #freeClassForm button:hover {
+            background: red;
+            color: white;
+        }
+
+        /* APPLICATIONS */
+
+        .applications {
+            margin-top: 70px;
+        }
+
+        .application-container {
+            margin-top: 30px;
+        }
+
+        .application-card {
+
+            background: #1c1c1c;
+
+            border: 1px solid #333;
+
+            border-left: 5px solid orange;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .application-card h3 {
+            color: orange;
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .application-card p {
+            color: #ddd;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .application-card strong {
+            color: white;
+        }
+
+        .no-applications {
+
+            background: #1c1c1c;
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            color: #aaa;
+        }
+
+        /* MEMBERSHIP */
+
+        .membership {
+            margin-top: 70px;
+        }
+
+        .plans {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 20px;
+
+            margin-top: 30px;
+        }
+
+        .plan {
+
+            background: #1c1c1c;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            border: 1px solid #333;
+        }
+
+        .plan h3 {
+
+            color: orange;
+
+            margin-bottom: 15px;
+
+            font-size: 22px;
+        }
+
+        .plan p {
+
+            color: #ccc;
+
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+
+        footer {
+
+            margin-top: 50px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background: #050505;
+
+            color: #999;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .container {
+                padding: 40px 5%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+
+<nav>
+
+    <div class="logo">
+        UNIQUE FITNESS
+    </div>
+
+    <div>
+
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+        <a href="{% url 'nutrition' %}">
+            Nutrition
+        </a>
+
+        <a href="{% url 'about' %}">
+            About
+        </a>
+
+        <a href="{% url 'logout' %}">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="welcome">
+
+        Login successful!
+
+        Welcome
+        {% if member_name %}
+            {{ member_name }}
+        {% endif %}
+        👋
+
+    </div>
+
+
+    <h1>
+
+        YOUR FITNESS
+        JOURNEY STARTS HERE
+
+    </h1>
+
+
+    <p>
+
+        Welcome to Unique Fitness.
+
+        Explore our gym classes,
+        training programs,
+        free trial classes,
+        nutrition guidance and
+        membership plans.
+
+    </p>
+
+</section>
+
+
+<!-- MAIN -->
+
+<section class="container">
+
+
+    <!-- CLASSES -->
+
+    <h2 class="title">
+        OUR GYM CLASSES
+    </h2>
+
+    <p class="subtitle">
+
+        Choose the class that matches
+        your fitness goal.
+
+    </p>
+
+
+    <div class="classes">
+
+
+        <div class="card">
+
+            <h2>
+                💪 Strength Training
+            </h2>
+
+            <p>
+
+                Build muscle and increase
+                your strength with professional
+                training.
+
+            </p>
+
+            <ul>
+
+                <li>✓ Weight Training</li>
+                <li>✓ Muscle Building</li>
+                <li>✓ Trainer Guidance</li>
+                <li>✓ Beginner Friendly</li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                🔥 HIIT Workout
+            </h2>
+
+            <p>
+
+                High intensity workouts designed
+                to improve stamina and fitness.
+
+            </p>
+
+            <ul>
+
+                <li>✓ Fat Loss</li>
+                <li>✓ Cardio Training</li>
+                <li>✓ Group Workout</li>
+                <li>✓ Trainer Support</li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                🧘 Yoga
+            </h2>
+
+            <p>
+
+                Improve flexibility, balance,
+                relaxation and overall fitness.
+
+            </p>
+
+            <ul>
+
+                <li>✓ Flexibility</li>
+                <li>✓ Stress Relief</li>
+                <li>✓ Beginner Friendly</li>
+                <li>✓ Morning Sessions</li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                🏃 Cardio Fitness
+            </h2>
+
+            <p>
+
+                Improve cardiovascular fitness
+                with modern cardio equipment.
+
+            </p>
+
+            <ul>
+
+                <li>✓ Treadmill</li>
+                <li>✓ Cycling</li>
+                <li>✓ Running</li>
+                <li>✓ Endurance Training</li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- FREE CLASS -->
+
+    <div class="free-class">
+
+        <h2>
+            🎁 FREE TRIAL CLASS
+        </h2>
+
+        <p>
+
+            New members can attend
+            one free introductory gym class.
+
+        </p>
+
+        <p>
+
+            Meet our trainer, understand
+            the workout routine and
+            experience our gym before
+            choosing a membership.
+
+        </p>
+
+        <p>
+
+            <strong>Duration:</strong>
+            60 Minutes
+
+        </p>
+
+        <p>
+
+            <strong>Available For:</strong>
+            New Members
+
+        </p>
+
+
+        <button
+            class="join-btn"
+            onclick="showFreeClassForm()">
+
+            JOIN FREE CLASS
+
+        </button>
+
+
+        <!-- FORM -->
+
+        <div id="freeClassForm">
+
+            <h2>
+                JOIN FREE CLASS
+            </h2>
+
+
+            <form
+                method="POST"
+                action="{% url 'apply_free_class' %}">
+
+                {% csrf_token %}
+
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    value="{{ member_name }}"
+                    required
+                >
+
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+
+                <select
+                    name="selected_class"
+                    required>
+
+                    <option value="">
+                        Select a class
+                    </option>
+
+                    <option value="Strength Training">
+                        Strength Training
+                    </option>
+
+                    <option value="HIIT">
+                        HIIT
+                    </option>
+
+                    <option value="Yoga">
+                        Yoga
+                    </option>
+
+                    <option value="Cardio">
+                        Cardio
+                    </option>
+
+                </select>
+
+
+                <button type="submit">
+
+                    APPLY NOW
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- MY APPLICATIONS -->
+    <!-- ========================= -->
+
+    <div class="applications">
+
+        <h2 class="title">
+            MY FREE CLASS APPLICATIONS
+        </h2>
+
+        <p class="subtitle">
+
+            Your submitted free class applications.
+
+        </p>
+
+
+        <div class="application-container">
+
+
+            {% if applications %}
+
+
+                {% for application in applications %}
+
+
+                    <div class="application-card">
+
+                        <h3>
+                            🎯 Free Class Application #{{ application.id }}
+                        </h3>
+
+
+                        <p>
+
+                            <strong>Name:</strong>
+
+                            {{ application.name }}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>Email:</strong>
+
+                            {{ application.email }}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>Phone:</strong>
+
+                            {{ application.phone }}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>Selected Class:</strong>
+
+                            {{ application.selected_class }}
+
+                        </p>
+
+
+                    </div>
+
+
+                {% endfor %}
+
+
+            {% else %}
+
+
+                <div class="no-applications">
+
+                    You have not applied for any free class yet.
+
+                </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+
+    <!-- MEMBERSHIP -->
+
+    <div class="membership">
+
+        <h2 class="title">
+            MEMBERSHIP PLANS
+        </h2>
+
+        <p class="subtitle">
+
+            Select a plan according
+            to your fitness goal.
+
+        </p>
+
+
+        <div class="plans">
+
+
+            <div class="plan">
+
+                <h3>
+                    Monthly Plan
+                </h3>
+
+                <p>
+
+                    ₹1,000 / Month
+
+                    <br><br>
+
+                    ✓ Gym Access
+
+                    <br>
+
+                    ✓ Basic Trainer Guidance
+
+                    <br>
+
+                    ✓ Fitness Support
+
+                </p>
+
+            </div>
+
+
+            <div class="plan">
+
+                <h3>
+                    Quarterly Plan
+                </h3>
+
+                <p>
+
+                    ₹2,700 / 3 Months
+
+                    <br><br>
+
+                    ✓ Gym Access
+
+                    <br>
+
+                    ✓ Trainer Support
+
+                    <br>
+
+                    ✓ Fitness Guidance
+
+                </p>
+
+            </div>
+
+
+            <div class="plan">
+
+                <h3>
+                    Half-Yearly Plan
+                </h3>
+
+                <p>
+
+                    ₹5,000 / 6 Months
+
+                    <br><br>
+
+                    ✓ Gym Access
+
+                    <br>
+
+                    ✓ Fitness Guidance
+
+                    <br>
+
+                    ✓ Trainer Support
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Unique Fitness
+
+    <br>
+
+    Train Hard • Stay Healthy • Be Strong
+
+</footer>
+
+
+<script>
+
+
+function showFreeClassForm() {
+
+    const form =
+        document.getElementById("freeClassForm");
+
+    form.style.display = "block";
+
+    form.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+function logout() {
+
+    window.location.href = "/login/";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

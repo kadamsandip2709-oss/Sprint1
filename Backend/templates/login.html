@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Unique Fitness</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background-image:
+                linear-gradient(
+                    rgba(0,0,0,0.60),
+                    rgba(0,0,0,0.70)
+                ),
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        .login-box {
+            width: 340px;
+            padding: 25px;
+
+            background-color: white;
+
+            border-radius: 15px;
+
+            box-shadow: 0 0 20px black;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            color: black;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+
+            margin-top: 8px;
+            margin-bottom: 15px;
+
+            border: 1px solid gray;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+
+            background-color: orange;
+
+            border: none;
+            border-radius: 8px;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: red;
+            color: white;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: black;
+        }
+
+        .register-link a {
+            color: red;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .forgot-link a {
+            color: red;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .message {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>LOGIN</h1>
+
+        {% if error %}
+
+            <div class="message error">
+                {{ error }}
+            </div>
+
+        {% endif %}
+
+        <form method="POST" action="/login/">
+
+            {% csrf_token %}
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <div class="register-link">
+
+            New User?
+
+            <a href="/register/">
+                Register
+            </a>
+
+        </div>
+
+        <div class="forgot-link">
+
+            <a href="#">
+                Forgot Password?
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

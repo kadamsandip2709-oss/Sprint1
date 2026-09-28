@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nutrition - Unique Fitness</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+    }
+
+    /* NAVBAR */
+
+    nav {
+        background: white;
+        padding: 18px 7%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        color: red;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    /* NAVIGATION MENU */
+
+    .menu {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        display: inline-block;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: black;
+        margin-left: 25px;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: red;
+    }
+
+    /* HERO */
+
+    .hero {
+        min-height: 380px;
+        padding: 70px 7%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        background-image:
+        linear-gradient(
+            rgba(0,0,0,0.65),
+            rgba(0,0,0,0.75)
+        ),
+        url("https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1600&q=80");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+        color: orange;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        max-width: 750px;
+        color: #ddd;
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+    /* MAIN */
+
+    .container {
+        padding: 60px 7%;
+    }
+
+    .title {
+        text-align: center;
+        color: orange;
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #aaa;
+        margin-bottom: 40px;
+        line-height: 1.6;
+    }
+
+    /* FOOD GRID */
+
+    .food-grid {
+        display: grid;
+        grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+    }
+
+    /* FOOD CARD */
+
+    .food-card {
+        background: #1c1c1c;
+        border: 1px solid #333;
+        border-radius: 15px;
+        padding: 20px;
+        transition: 0.3s;
+    }
+
+    .food-card:hover {
+        transform: translateY(-7px);
+        border-color: orange;
+    }
+
+    .food-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 18px;
+    }
+
+    .food-card h2 {
+        color: orange;
+        margin-bottom: 12px;
+    }
+
+    .food-card p {
+        color: #ccc;
+        line-height: 1.7;
+    }
+
+    /* HEALTHY SECTION */
+
+    .healthy-section {
+        margin-top: 60px;
+    }
+
+    .healthy-grid {
+        display: grid;
+        grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .healthy-card {
+        background: #172d1d;
+        border: 1px solid #39834a;
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    .healthy-card h2 {
+        color: #65e681;
+        margin-bottom: 18px;
+    }
+
+    .healthy-card ul {
+        list-style: none;
+    }
+
+    .healthy-card li {
+        color: #ddd;
+        padding: 8px 0;
+        line-height: 1.5;
+    }
+
+    /* AVOID SECTION */
+
+    .avoid-section {
+        margin-top: 60px;
+    }
+
+    .avoid-card {
+        background: #351717;
+        border: 1px solid #9b3c3c;
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    .avoid-card h2 {
+        color: #ff7070;
+        margin-bottom: 20px;
+    }
+
+    .avoid-grid {
+        display: grid;
+        grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+        gap: 10px;
+    }
+
+    .avoid-grid p {
+        color: #ddd;
+        padding: 8px 0;
+    }
+
+    /* WATER */
+
+    .water-section {
+        margin-top: 60px;
+        padding: 40px;
+        text-align: center;
+        border: 2px solid #3498db;
+        border-radius: 15px;
+        background: #101f2b;
+    }
+
+    .water-section h2 {
+        color: #4db8ff;
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .water-section p {
+        color: #ddd;
+        max-width: 750px;
+        margin: auto;
+        line-height: 1.7;
+    }
+
+    .water-tips {
+        margin-top: 25px;
+        display: grid;
+        grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .water-tip {
+        background: #182d3b;
+        padding: 18px;
+        border-radius: 10px;
+        color: #ddd;
+    }
+
+    /* WORKOUT FOOD */
+
+    .workout-section {
+        margin-top: 60px;
+    }
+
+    .workout-card {
+        background: #1c1c1c;
+        padding: 25px;
+        margin-bottom: 18px;
+        border-left: 5px solid orange;
+        border-radius: 10px;
+    }
+
+    .workout-card h3 {
+        color: orange;
+        margin-bottom: 10px;
+    }
+
+    .workout-card p {
+        color: #ccc;
+        line-height: 1.7;
+    }
+
+    /* FOOTER */
+
+    footer {
+        margin-top: 50px;
+        padding: 25px;
+        text-align: center;
+        background: #050505;
+        color: #999;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+        nav {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 0 8px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+    }
+
+</style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+<nav>
+    <h1>UNIQUE FITNESS</h1>
+
+    <ul class="menu">
+        <li>
+            <a href="{% url 'home' %}">Home</a>
+        </li>
+
+        <li>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+        </li>
+
+        <li>
+            <a href="{% url 'nutrition' %}">Nutrition</a>
+        </li>
+
+        <li>
+            <a href="{% url 'logout' %}">Logout</a>
+        </li>
+    </ul>
+</nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>
+            HEALTHY EATING GUIDE
+        </h1>
+
+
+        <p>
+
+            A healthy diet is an important
+            part of your fitness journey.
+
+            Choose nutritious foods, eat balanced
+            meals and stay properly hydrated.
+
+        </p>
+
+    </section>
+
+
+    <!-- MAIN -->
+
+    <section class="container">
+
+
+        <h2 class="title">
+            🥗 WHAT SHOULD YOU EAT?
+        </h2>
+
+
+        <p class="subtitle">
+
+            Choose a variety of nutritious foods
+            for a balanced diet.
+
+        </p>
+
+
+        <!-- FOOD CARDS -->
+
+        <div class="food-grid">
+
+
+            <!-- FRUITS -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=800&q=80"
+                    alt="Fresh Fruits"
+                >
+
+                <h2>
+                    🍎 Fruits
+                </h2>
+
+                <p>
+
+                    Eat fruits such as apples,
+                    bananas, oranges, guava,
+                    papaya and other seasonal fruits.
+
+                    Fruits provide vitamins, minerals
+                    and natural carbohydrates.
+
+                </p>
+
+            </div>
+
+
+            <!-- VEGETABLES -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80"
+                    alt="Fresh Vegetables"
+                >
+
+                <h2>
+                    🥦 Vegetables
+                </h2>
+
+                <p>
+
+                    Include green leafy vegetables,
+                    carrots, tomatoes, beans,
+                    broccoli and other vegetables.
+
+                </p>
+
+            </div>
+
+
+            <!-- WHOLE GRAINS -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80"
+                    alt="Whole Grains"
+                >
+
+                <h2>
+                    🌾 Whole Grains
+                </h2>
+
+                <p>
+
+                    Choose oats, brown rice,
+                    whole wheat roti, jowar,
+                    bajra and other whole grains.
+
+                </p>
+
+            </div>
+
+
+            <!-- PROTEIN -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
+                    alt="Healthy Protein Foods"
+                >
+
+                <h2>
+                    🫘 Protein Foods
+                </h2>
+
+                <p>
+
+                    Include dal, beans, chickpeas,
+                    soy products, paneer, milk
+                    and curd as suitable protein sources.
+
+                </p>
+
+            </div>
+
+
+            <!-- NUTS -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=800&q=80"
+                    alt="Nuts and Seeds"
+                >
+
+                <h2>
+                    🥜 Nuts & Seeds
+                </h2>
+
+                <p>
+
+                    Almonds, peanuts, walnuts
+                    and seeds can be included
+                    in appropriate portions.
+
+                </p>
+
+            </div>
+
+
+            <!-- DAIRY -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=800&q=80"
+                    alt="Milk and Dairy"
+                >
+
+                <h2>
+                    🥛 Dairy Foods
+                </h2>
+
+                <p>
+
+                    Milk, curd and paneer can be
+                    part of a balanced diet if they
+                    suit your dietary preferences.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- HEALTHY HABITS -->
+
+        <div class="healthy-section">
+
+
+            <h2 class="title">
+                ✅ HEALTHY EATING HABITS
+            </h2>
+
+
+            <p class="subtitle">
+
+                Simple habits that can support
+                your fitness journey.
+
+            </p>
+
+
+            <div class="healthy-grid">
+
+
+                <div class="healthy-card">
+
+                    <h2>
+                        🥗 Eat Balanced Meals
+                    </h2>
+
+                    <ul>
+
+                        <li>✓ Include vegetables</li>
+
+                        <li>✓ Include fruits</li>
+
+                        <li>✓ Include protein foods</li>
+
+                        <li>✓ Choose whole grains</li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="healthy-card">
+
+                    <h2>
+                        🍳 Choose Healthy Foods
+                    </h2>
+
+                    <ul>
+
+                        <li>✓ Prefer home-cooked food</li>
+
+                        <li>✓ Eat different food groups</li>
+
+                        <li>✓ Choose nutritious snacks</li>
+
+                        <li>✓ Limit processed foods</li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="healthy-card">
+
+                    <h2>
+                        ⏰ Regular Eating
+                    </h2>
+
+                    <ul>
+
+                        <li>✓ Don't skip meals unnecessarily</li>
+
+                        <li>✓ Follow a regular eating routine</li>
+
+                        <li>✓ Eat appropriate portions</li>
+
+                        <li>✓ Listen to your hunger</li>
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- FOODS TO LIMIT -->
+
+        <div class="avoid-section">
+
+
+            <h2 class="title">
+                ❌ WHAT SHOULD YOU LIMIT?
+            </h2>
+
+
+            <p class="subtitle">
+
+                Try to limit these foods,
+                especially when consumed frequently.
+
+            </p>
+
+
+            <div class="avoid-card">
+
+                <h2>
+                    Foods to Limit
+                </h2>
+
+
+                <div class="avoid-grid">
+
+                    <p>❌ Excessive sugary drinks</p>
+
+                    <p>❌ Excessive sweets</p>
+
+                    <p>❌ Frequent fast food</p>
+
+                    <p>❌ Deep-fried foods</p>
+
+                    <p>❌ Excessive packaged snacks</p>
+
+                    <p>❌ Excessive added sugar</p>
+
+                    <p>❌ Excessively salty foods</p>
+
+                    <p>❌ Highly processed foods</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- WATER -->
+
+        <div class="water-section">
+
+
+            <h2>
+                💧 STAY HYDRATED
+            </h2>
+
+
+            <p>
+
+                Drink water regularly throughout
+                the day.
+
+                During workouts and hot weather,
+                you may need more fluids because
+                of increased sweating.
+
+            </p>
+
+
+            <div class="water-tips">
+
+
+                <div class="water-tip">
+                    💧 Drink water regularly
+                </div>
+
+                <div class="water-tip">
+                    🏋️ Drink during workouts
+                    when needed
+                </div>
+
+                <div class="water-tip">
+                    ☀️ Pay attention to hydration
+                    in hot weather
+                </div>
+
+                <div class="water-tip">
+                    🚰 Keep a water bottle with you
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- WORKOUT FOOD -->
+
+        <div class="workout-section">
+
+
+            <h2 class="title">
+                🏋️ FOOD AROUND YOUR WORKOUT
+            </h2>
+
+
+            <p class="subtitle">
+
+                Simple food ideas around your
+                gym session.
+
+            </p>
+
+
+            <div class="workout-card">
+
+                <h3>
+                    Before Workout
+                </h3>
+
+                <p>
+
+                    Choose an easily digestible
+                    meal or snack according to
+                    your schedule.
+
+                    Examples include banana,
+                    oats, fruit or a light meal.
+
+                </p>
+
+            </div>
+
+
+            <div class="workout-card">
+
+                <h3>
+                    After Workout
+                </h3>
+
+                <p>
+
+                    Have a balanced meal containing
+                    a protein source and carbohydrates.
+
+                    Examples include dal-rice,
+                    paneer with roti, curd with a meal,
+                    or another balanced meal.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 Unique Fitness
+
+        <br>
+
+        Eat Healthy • Train Smart • Stay Strong
+
+    </footer>
+
+
+</body>
+
+</html>

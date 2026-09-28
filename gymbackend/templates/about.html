@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+    <title>About Us - Unique Fitness</title>
+
+    <style>
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #111;
+
+            color: white;
+        }
+
+        nav {
+            background-color: white;
+
+            padding: 20px;
+
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 20px;
+
+            text-decoration: none;
+
+            color: black;
+
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+
+        .about {
+            max-width: 800px;
+
+            margin: 80px auto;
+
+            padding: 40px;
+
+            text-align: center;
+        }
+
+        h1 {
+            color: orange;
+        }
+
+        p {
+            line-height: 1.8;
+
+            font-size: 18px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+    <a href="{% url 'home' %}">Home</a>
+
+    <a href="{% url 'about' %}">About Us</a>
+
+    <a href="{% url 'classes' %}">Classes</a>
+
+    <a href="{% url 'contact' %}">Contact Us</a>
+
+</nav>
+
+    <div class="about">
+
+        <h1>ABOUT UNIQUE FITNESS</h1>
+
+        <p>
+            Unique Fitness is a modern gym designed
+            to help people achieve their fitness goals.
+        </p>
+
+        <p>
+            We provide personalized training,
+            modern equipment and professional guidance.
+        </p>
+
+    </div>
+
+</body>
+
+</html>

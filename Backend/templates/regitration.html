@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register - Unique Fitness</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background-image: url("https://www.shutterstock.com/image-photo/dumbbell-barbell-workout-gym-copy-260nw-1484912849.jpg");
+            background-size: cover;
+            background-position: center;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        .register-box {
+            width: 340px;
+            padding: 25px;
+
+            background-color: white;
+            border-radius: 15px;
+
+            box-shadow: 0 0 20px black;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 12px;
+
+            margin-top: 8px;
+            margin-bottom: 15px;
+
+            border: 1px solid gray;
+
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 12px;
+
+            background-color: orange;
+
+            border: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: red;
+            color: white;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: red;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="register-box">
+
+        <h1>REGISTER</h1>
+
+        <!-- Error Message -->
+
+        {% if error %}
+
+            <p class="error">
+                {{ error }}
+            </p>
+
+        {% endif %}
+
+
+        <!-- Registration Form -->
+
+        <form method="POST" action="/register/">
+
+    {% csrf_token %}
+
+    <label>Full Name</label>
+
+    <input
+        type="text"
+        name="full_name"
+        placeholder="Enter your name"
+        required
+    >
+
+    <label>Email</label>
+
+    <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+    >
+
+    <label>Password</label>
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Create password"
+        required
+    >
+
+    <label>Confirm Password</label>
+
+    <input
+        type="password"
+        name="confirm_password"
+        placeholder="Confirm password"
+        required
+    >
+
+    <button type="submit">
+        Register
+    </button>
+
+</form>
+
+        
+
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="/login/">
+                Login
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

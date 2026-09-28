@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Classes & Fees - Unique Fitness</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #111;
+
+            color: white;
+        }
+
+        /* Navigation */
+
+        nav {
+            background-color: white;
+
+            padding: 20px;
+
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 20px;
+
+            text-decoration: none;
+
+            color: black;
+
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+
+
+        /* Heading */
+
+        .heading {
+            text-align: center;
+
+            margin-top: 45px;
+        }
+
+        .heading h1 {
+            color: orange;
+
+            font-size: 35px;
+        }
+
+        .heading p {
+            color: #ddd;
+
+            font-size: 17px;
+        }
+
+
+        /* Fee Cards */
+
+        .fees {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: stretch;
+
+            gap: 25px;
+
+            margin: 45px 30px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .fee-card {
+            width: 250px;
+
+            background-color: #222;
+
+            border: 1px solid #444;
+
+            border-radius: 15px;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+
+        .fee-card:hover {
+            transform: translateY(-10px);
+
+            box-shadow: 0 10px 25px black;
+
+            border-color: orange;
+        }
+
+
+        .fee-card h2 {
+            color: orange;
+
+            margin-bottom: 15px;
+        }
+
+
+        .price {
+            font-size: 30px;
+
+            color: white;
+
+            font-weight: bold;
+
+            margin: 20px 0;
+        }
+
+
+        .price span {
+            font-size: 14px;
+
+            color: #aaa;
+        }
+
+
+        .fee-card ul {
+            list-style: none;
+
+            padding: 0;
+
+            line-height: 2;
+        }
+
+
+        .fee-card li {
+            color: #ddd;
+        }
+
+
+        .join {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 10px 25px;
+
+            background-color: orange;
+
+            color: black;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+        }
+
+
+        .join:hover {
+            background-color: red;
+
+            color: white;
+        }
+
+
+        /* Cardio Section */
+
+        .cardio-section {
+
+            text-align: center;
+
+            margin: 60px 30px;
+        }
+
+
+        .cardio-section h1 {
+
+            color: red;
+
+            margin-bottom: 15px;
+        }
+
+
+        .cardio-section p {
+
+            color: #ddd;
+
+            font-size: 17px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+    <a href="{% url 'home' %}">Home</a>
+
+    <a href="{% url 'about' %}">About Us</a>
+
+    <a href="{% url 'classes' %}">Classes</a>
+
+    <a href="{% url 'contact' %}">Contact Us</a>
+
+</nav>
+
+
+    <!-- Heading -->
+
+    <div class="heading">
+
+        <h1>FITNESS CLASSES & FEES</h1>
+
+        <p>
+            Choose the best membership plan for your fitness journey.
+        </p>
+
+    </div>
+
+
+    <!-- Fees -->
+
+    <div class="fees">
+
+
+        <!-- Monthly -->
+
+        <div class="fee-card">
+
+            <h2>MONTHLY</h2>
+
+            <div class="price">
+                ₹1,000
+                <span>/ Month</span>
+            </div>
+
+            <ul>
+
+                <li>✓ Gym Access</li>
+
+                <li>✓ Weight Training</li>
+
+                <li>✓ Basic Trainer Support</li>
+
+                <li>✓ Locker Facility</li>
+
+            </ul>
+
+            <a href="login.html" class="join">
+                Join Now
+            </a>
+
+        </div>
+
+
+        <!-- Yearly -->
+
+        <div class="fee-card">
+
+            <h2>YEARLY</h2>
+
+            <div class="price">
+                ₹10,000
+                <span>/ Year</span>
+            </div>
+
+            <ul>
+
+                <li>✓ Unlimited Gym Access</li>
+
+                <li>✓ Weight Training</li>
+
+                <li>✓ Personal Trainer</li>
+
+                <li>✓ Locker Facility</li>
+
+            </ul>
+
+            <a href="login.html" class="join">
+                Join Now
+            </a>
+
+        </div>
+
+
+        <!-- One Day -->
+
+        <div class="fee-card">
+
+            <h2>ONE DAY</h2>
+
+            <div class="price">
+                ₹150
+                <span>/ Day</span>
+            </div>
+
+            <ul>
+
+                <li>✓ One Day Gym Access</li>
+
+                <li>✓ Weight Training</li>
+
+                <li>✓ Basic Equipment</li>
+
+                <li>✓ Trainer Guidance</li>
+
+            </ul>
+
+            <a href="login.html" class="join">
+                Join Now
+            </a>
+
+        </div>
+
+
+        <!-- Cardio -->
+
+        <div class="fee-card">
+
+            <h2>CARDIO</h2>
+
+            <div class="price">
+                ₹700
+                <span>/ Month</span>
+            </div>
+
+            <ul>
+
+                <li>✓ Treadmill</li>
+
+                <li>✓ Cycling</li>
+
+                <li>✓ Cross Trainer</li>
+
+                <li>✓ Cardio Guidance</li>
+
+            </ul>
+
+            <a href="login.html" class="join">
+                Join Now
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Cardio Information -->
+
+    <div class="cardio-section">
+
+        <h1>💪 CARDIO TRAINING</h1>
+
+        <p>
+            Improve your stamina, burn calories and keep your heart healthy
+            with our modern cardio equipment.
+        </p>
+
+    </div>
+
+
+</body>
+
+</html>
